@@ -47,7 +47,7 @@ void playNote(int freq, int duration) {
   int j = waveformLength / 4;
   int waitTime1 = 1000000 / waveformLength / freq;
   int waitTime2 = 1000000 / waveformLength / 10;
-  printf("Play error %d\n", freq);
+  printf("Play  %d\n", freq);
   while (1) {
     mod1 = waveform[i];
     mod2 = waveform[j];
@@ -77,7 +77,6 @@ void stopPlayNoteG(void) { queue.cancel(idG); }
 
 int main(void) {
   t.start(callback(&queue, &EventQueue::dispatch_forever));
-  playNoteC();
   keyboard0.fall(queue.event(playNoteC));
   keyboard1.fall(queue.event(playNoteE));
   keyboard2.fall(queue.event(playNoteG));
